@@ -33,9 +33,8 @@
 			if(!empty($ans))
 			{
 				session_start();
-				$_SESSION["username"] = $username;
 				$_SESSION["data"] = $ans[0];
-				header("Location: home.php?{$ans[0]['username']}");
+				header("Location: home.php");
 			}
 			else
 			{

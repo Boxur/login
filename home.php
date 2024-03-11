@@ -2,20 +2,13 @@
 
 
     session_start();
-
-    $conn = mysqli_connect('localhost','admin','admin','main');
-    $username = $_SERVER['QUERY_STRING'];
-    $query = "SELECT * FROM logins WHERE username='$username'";
-
-    $result = mysqli_query($conn, $query);
-
-    $ans = mysqli_fetch_all($result,MYSQLI_ASSOC);
-
-    if(empty($ans))
+    if(empty($_SESSION["data"]["username"]))
     {
         header("Location: index.php");
     }
-    echo "Welcome " . $ans[0]["username"] . " twoje haslo to: ".$ans[0]["password"];
+    $username = $_SESSION["data"]["username"];
+    $password = $_SESSION["data"]["password"];
+    echo "Welcome " . $username . " twoje haslo to: ". $password;
 
 
 ?>
